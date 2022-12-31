@@ -10,16 +10,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Social {
-  profileUrl String // Your custom path
-  socialUrl String // The social network's public path to get the favicon
-  portfolio Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  portfolioId String
+model About {
+  id            String  @id
+  firstName     String
+  lastName      String
+  phoneNumber   String
+  image         String
+  resume        String
+  bio           String
+  email         String
+  heroQuote     String?
+  numberOfViews BigInt  @default(0) //hopefully big int :)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
 
-  @@id([portfolioId, socialUrl])
+model Social {
+  name         String @id
+  url String // Your custom path
+  image      String
 }
 
 enum JobType {
@@ -29,52 +39,24 @@ enum JobType {
 }
 
 model Experience {
-  id    String     @id @default(uuid())
-  company String
-  companyUrl String
-  startDate DateTime
-  isCurrent Boolean
-  endDate DateTime?
-  jobResponsabilities String[]
-  portfolio Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  portfolioId String
+  company             String // for the favicon.ico
+  companyUrl          String
+  image               String
+  title               String
+  startDate           DateTime
+  isCurrent           Boolean
+  endDate             DateTime?
+  jobResponsibilities String[]
 
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  @@id([company, title])
 }
 
-model Portfolio {
-  id  String @id @default(uuid())
-  firstName String
-  lastName String
-  phoneNumber String
-  image String
-  resume String
-  bio String
-  email String
-  heroQuote String?
-  socials Social[]
-  experiences Experience[]
-  headLines String[]
-  projects Project[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Project {
-  id           String   @id @default(uuid())
-  title        String
+model Project {  
+  title        String @id
   description  String
   technologies String[]
-  githubLink   String
-  projectLink  String
-  portfolio Portfolio @relation(references: [id], fields: [portfolioId], onDelete: Cascade, onUpdate: Cascade)
-  portfolioId String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  githubLink   String @unique
+  projectLink  String?
 }
 
 enum SkillLevel {
@@ -83,11 +65,23 @@ enum SkillLevel {
   expert
 }
 
-model Skill {
-  id    String     @id @default(uuid())
-  name  String
-  level SkillLevel
+model SkillCategory {
+  name     String  @id
+  skills Skill[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Skill {
+  name         String        @id
+  level      SkillLevel
+  image      String
+  category   SkillCategory @relation(fields: [categoryId], references: [name], onDelete: Cascade, onUpdate: Cascade)
+  categoryId String
+}
+
+model Hobby {
+  name String @id
+  image String
 }

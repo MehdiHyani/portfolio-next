@@ -17,9 +17,10 @@ import {
     CloseIcon,
     MoonIcon,
     SunIcon,
+    ExternalLinkIcon
 } from '@chakra-ui/icons';
 
-export default function Navbar() {
+export default function Navbar({ resume }: { resume: string }) {
     const { isOpen, onToggle } = useDisclosure();
     const { colorMode, toggleColorMode } = useColorMode();
 
@@ -53,8 +54,17 @@ export default function Navbar() {
                         textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
                         fontFamily={'cursive'}
                         fontWeight='bold'
+                        fontSize='2xl'
                         color={useColorModeValue('gray.800', 'white')}>
-                        Mehdi Hyani
+                        M
+                    </Text>
+                    <Text
+                        textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+                        fontFamily={'cursive'}
+                        fontWeight='bold'
+                        fontSize='2xl'
+                        color={useColorModeValue('gray.800', 'white')}>
+                        H
                     </Text>
 
                     <Flex display={{ base: 'none', md: 'flex' }} m='auto'>
@@ -63,11 +73,27 @@ export default function Navbar() {
                 </Flex>
 
                 <Flex alignItems={'center'}>
-                    <Stack direction={'row'} spacing={7}>
-                        <Button onClick={toggleColorMode}>
-                            {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-                        </Button>
-                    </Stack>
+                    <Link
+                        p={2}
+                        target='_blank'
+                        referrerPolicy='no-referrer'
+                        fontSize={'sm'}
+                        fontWeight={500}
+                        isExternal
+                        href={resume}
+                        _hover={{
+                            textDecoration: 'none',
+                            color: 'red.500',
+                        }}>
+                        <Flex p={2} alignItems='center'>
+                            <Text hidden={useBreakpointValue({ base: true, md: false })}>My Resume</Text>
+                            <ExternalLinkIcon boxSize='4' mx={6} />
+                        </Flex>
+
+                    </Link>
+                    <Button onClick={toggleColorMode}>
+                        {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+                    </Button>
                 </Flex>
             </Flex>
 
