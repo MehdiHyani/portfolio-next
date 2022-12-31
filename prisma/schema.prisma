@@ -10,13 +10,68 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Social {
+  profileUrl String // Your custom path
+  socialUrl String // The social network's public path to get the favicon
+  portfolio Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  portfolioId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([portfolioId, socialUrl])
+}
+
+enum JobType {
+  partTime
+  fullTime
+  internship
+}
+
+model Experience {
+  id    String     @id @default(uuid())
+  company String
+  companyUrl String
+  startDate DateTime
+  isCurrent Boolean
+  endDate DateTime?
+  jobResponsabilities String[]
+  portfolio Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  portfolioId String
+
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Portfolio {
+  id  String @id @default(uuid())
+  firstName String
+  lastName String
+  phoneNumber String
+  image String
+  resume String
+  bio String
+  email String
+  heroQuote String?
+  socials Social[]
+  experiences Experience[]
+  headLines String[]
+  projects Project[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model Project {
-  id String @id @default(uuid())
-  title String
-  description String
+  id           String   @id @default(uuid())
+  title        String
+  description  String
   technologies String[]
-  githubLink String
-  projectLink String
+  githubLink   String
+  projectLink  String
+  portfolio Portfolio @relation(references: [id], fields: [portfolioId], onDelete: Cascade, onUpdate: Cascade)
+  portfolioId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -29,8 +84,9 @@ enum SkillLevel {
 }
 
 model Skill {
-  id String @id @default(uuid())
-  name String
+  id    String     @id @default(uuid())
+  name  String
+  level SkillLevel
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
