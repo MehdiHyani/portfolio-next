@@ -1,6 +1,8 @@
 import React from 'react';
 import {
-    Box, Container, Heading, HStack, Stack, Text, VStack, Image, Flex, useColorMode, keyframes, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverHeader, PopoverBody, CircularProgress
+    Box, Container, Heading, HStack, Stack, Text, VStack, Image, Flex, useColorMode,
+    Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverHeader,
+    PopoverBody, CircularProgress
 } from '@chakra-ui/react';
 import { trpc } from '../utils/trpc';
 import { getValueForSkillLevel } from '../utils/helpers';
@@ -10,19 +12,6 @@ const Skills = () => {
     const { data: portfolio, isLoading, error } =
         trpc.portfolio.getPortfolio.useQuery(undefined, { refetchOnWindowFocus: false, refetchOnMount: false });
     const { colorMode } = useColorMode();
-
-    const pulseRing = keyframes`
-	0% {
-        transform: scale(0.33);
-    }
-    40%,
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
-	`;
 
     if (isLoading)
         return <div>Loading</div>; // Add a spinner
@@ -37,9 +26,9 @@ const Skills = () => {
                     <Heading fontSize={'3xl'}>My skills</Heading>
                     <Text color={'gray.600'} fontSize={'xl'}>
                         What am I good at though ? 🤔
-                        <Text color={'gray.600'} fontSize={'sm'}>
-                            Hover over my skills to get more details
-                        </Text>
+                    </Text>
+                    <Text color={'gray.600'} fontSize={'sm'}>
+                        Hover over my skills to get more details
                     </Text>
                 </Stack>
 

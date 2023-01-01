@@ -39,7 +39,7 @@ enum JobType {
 }
 
 model Experience {
-  company             String // for the favicon.ico
+  company             String
   companyUrl          String
   image               String
   title               String
