@@ -51,7 +51,7 @@ export default function Hero() {
                     align={'center'}
                     spacing={{ base: 8, md: 10 }}
                     py={{ base: 20, md: 28 }}
-                    direction={{ base: 'column', md: 'row' }}>
+                    direction={{ base: 'column-reverse', md: 'row' }}>
                     <Stack flex={1} spacing={{ base: 5, md: 10 }}>
                         <Heading
                             lineHeight={1.1}
@@ -60,7 +60,7 @@ export default function Hero() {
                             <Text
                                 as={'span'}
                                 position={'relative'}
-                                noOfLines={2}
+                                noOfLines={1}
                                 _after={{
                                     content: "''",
                                     width: 'full',
@@ -68,13 +68,13 @@ export default function Hero() {
                                     position: 'absolute',
                                     bottom: 1,
                                     left: 0,
-                                    bg: 'red.400',
+                                    bg: colorMode === 'light' ? 'customBlue' : 'customRed',
                                     zIndex: -1,
                                 }}>
                                 {heroWavePhrases[wavePhrase]}
                             </Text>
                             <br />
-                            <Text as={'span'} color={'red.400'}>
+                            <Text fontSize='6xl' fontFamily='Techno' as={'span'} color={colorMode === 'light' ? 'customBlue' : 'customRed'}>
                                 {formatFullName(portfolio.about.firstName, portfolio.about.lastName)}
                             </Text>
                         </Heading>
@@ -96,8 +96,8 @@ export default function Hero() {
                                     px={6}
                                     rightIcon={<ExternalLinkIcon pt='1px' h={5} w={5} color={'gray.300'} />}
                                     colorScheme={'white'}
-                                    bg={'red.400'}
-                                    _hover={{ bg: 'red.500' }}>
+                                    bg={colorMode === 'light' ? 'customBlue' : 'customRed'}
+                                    _hover={{ bg: colorMode === 'light' ? 'customBlueFocused' : 'customRedFocused' }}>
                                     Check out my resume
                                 </Button>
                             </Link>
@@ -116,7 +116,8 @@ export default function Hero() {
                             top={'-20%'}
                             left={0}
                             zIndex={-1}
-                            color={colorMode === 'light' ? 'red.100' : 'red.400'}
+                            color={colorMode === 'light' ? 'customBlue' : 'customRed'}
+                            _hover={{ bg: colorMode === 'light' ? 'customBlueFocused' : 'customRedFocused' }}
                         />
                         <Box
                             position={'relative'}

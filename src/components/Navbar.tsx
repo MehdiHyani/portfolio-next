@@ -35,7 +35,13 @@ export default function Navbar() {
         return <div>Error</div>;
 
     return (
-        <Box>
+        <Box
+            position='fixed'
+            className='w-screen'
+            zIndex={999}
+            borderBottom='1px'
+            borderBottomColor={colorMode === 'light' ? 'customBlueFocused' : 'customRedFocused'}
+        >
             <Flex
                 bg={colorMode === 'light' ? 'white' : 'gray.800'}
                 color={colorMode === 'light' ? 'gray.600' : 'white'}
@@ -65,7 +71,7 @@ export default function Navbar() {
                         fontFamily={'cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
-                        color={colorMode === 'light' ? 'red.500' : 'white'}>
+                        color={colorMode === 'light' ? 'customBlue' : 'white'}>
                         {portfolio.about.firstName.charAt(0).toUpperCase()}
                     </Text>
                     <Text
@@ -73,7 +79,7 @@ export default function Navbar() {
                         fontFamily={'cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
-                        color={colorMode === 'light' ? 'gray.800' : 'red.500'}>
+                        color={colorMode === 'light' ? 'black' : 'red.500'}>
                         {portfolio.about.lastName.charAt(0).toUpperCase()}
                     </Text>
 
@@ -83,7 +89,7 @@ export default function Navbar() {
                 </Flex>
 
                 <Flex alignItems={'center'}>
-                    <Button onClick={toggleColorMode}>
+                    <Button mr={10} onClick={toggleColorMode}>
                         {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
                     </Button>
                 </Flex>
@@ -170,6 +176,10 @@ const NAV_ITEMS: Array<{ label: string, href: string }> = [
     {
         label: 'Some of my skills',
         href: '#skills'
+    },
+    {
+        label: 'My previous experience',
+        href: '#experience'
     },
     {
         label: 'Some of my projects',

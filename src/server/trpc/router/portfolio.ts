@@ -34,8 +34,10 @@ export default router({
                 };
             } catch (error) {
                 if (error instanceof PrismaClientKnownRequestError) {
-                    console.log(JSON.stringify(error));
+                    if(error.code === 'P2021')
+                        throw new TRPCError({ code: 'NOT_FOUND', message: 'Portfolio Not Found' })
                 }
+                throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR', message: 'Oops! Something went wrong...' })
             }
         })
 })

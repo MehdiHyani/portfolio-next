@@ -96,7 +96,7 @@ export const skillCategories = [
                 {
                     name: 'Vue',
                     level: 'intermediate',
-                    image: 'https://assets.stickpng.com/images/58482acecef1014c0b5e4a1e.png',
+                    image: 'https://images2.imgbox.com/1b/e9/uEYAbF1w_o.png',
                 },
                 {
                     name: 'Next',
@@ -151,7 +151,7 @@ export const skillCategories = [
             ]
         },
         {
-            name: 'Mobile and Cross-Platform Frameworks',
+            name: 'Mobile and MultiPlatform Frameworks',
             skills: [
                 {
                     name: 'Electron',
@@ -283,6 +283,7 @@ export const experiences = [
             'Reviewing Pull Requests',
             'Working on projects consisting of Students mentoring booking and campus access system, as well as systems for public Moroccan administrations'
         ],
+        jobType: 'partTime'
     },
     {
         company: 'neoCedrus',
@@ -302,6 +303,7 @@ export const experiences = [
             'Reviewing Pull Requests',
             'Working on projects consisting of Students mentoring booking and campus access system, as well as systems for public Moroccan administrations'
         ],
+        jobType: 'partTime'
     },
 ];
 

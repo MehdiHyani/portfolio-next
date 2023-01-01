@@ -7,6 +7,8 @@ import Hero from "../components/Hero";
 import Footer from "../components/Footer";
 import { formatFullName } from "../utils/helpers";
 import Skills from "../components/Skills";
+import Contact from "../components/Contact";
+import Experiences from "../components/Experiences";
 
 const Home: NextPage = () => {
     const { data: portfolio, isLoading, error } =
@@ -47,6 +49,8 @@ const Home: NextPage = () => {
                 <Navbar />
                 <Hero />
                 <Skills />
+                <Experiences />
+                <Contact />
                 <Footer />
             </main>
         </>

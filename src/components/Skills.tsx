@@ -41,19 +41,21 @@ const Skills = () => {
                                 align={'center'}
                                 _before={{
                                     content: '""',
-                                    borderBottom: '1px solid',
-                                    borderColor: colorMode === 'light' ? 'gray.200' : 'gray.700',
+                                    borderBottom: '2px solid',
+                                    borderStyle: 'dashed',
+                                    borderColor: colorMode === 'light' ? 'customBlueFocused' : 'customRedFocused',
                                     flexGrow: 1,
                                     mr: 8,
                                 }}
                                 _after={{
                                     content: '""',
-                                    borderBottom: '1px solid',
-                                    borderColor: colorMode === 'light' ? 'gray.200' : 'gray.700',
+                                    borderBottom: '2px solid',
+                                    borderStyle: 'dashed',
+                                    borderColor: colorMode === 'light' ? 'customBlueFocused' : 'customRedFocused',
                                     flexGrow: 1,
                                     ml: 8,
                                 }}>
-                                <Text align='center' fontWeight={600} fontSize={'2xl'}>
+                                <Text align='center' fontFamily='Debug' fontSize={'4xl'}>
                                     {skillCategory.name}
                                 </Text>
                             </Flex>

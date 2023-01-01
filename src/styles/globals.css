@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: Techno;
+    src: url(../../public/fonts/TechnoRaceItalic.woff) format('woff');
+}
+
+@font-face {
+    font-family: Robus;
+    src: url(../../public/fonts/Robus.woff) format('woff');
+}
+
+@font-face {
+    font-family: Debug;
+    src: url(../../public/fonts/Debug.woff) format('woff');
+}

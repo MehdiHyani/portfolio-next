@@ -48,6 +48,7 @@ model Experience {
   isCurrent           Boolean
   endDate             DateTime?
   jobResponsibilities String[]
+  jobType JobType
 
   @@id([company, title])
 }
