@@ -94,8 +94,8 @@ export const skillCategories = [
                 },
                 {
                     name: 'Vue',
-                    level: 'beginner',
-                    image: 'https://w7.pngwing.com/pngs/854/555/png-transparent-vue-js-hd-logo-thumbnail.png',
+                    level: 'intermediate',
+                    image: 'https://assets.stickpng.com/images/58482acecef1014c0b5e4a1e.png',
                 },
                 {
                     name: 'Next',
@@ -105,7 +105,7 @@ export const skillCategories = [
                 {
                     name: 'Nuxt',
                     level: 'beginner',
-                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Nuxt_logo_%282021%29.svg/2560px-Nuxt_logo_%282021%29.svg.png',
+                    image: 'https://seeklogo.com/images/N/nuxt-logo-5EF50E1ABD-seeklogo.com.png',
                 },
                 {
                     name: 'Bootstrap',
@@ -125,12 +125,12 @@ export const skillCategories = [
                 {
                     name: 'Node.js',
                     level: 'expert',
-                    image: 'https://e7.pngegg.com/pngimages/247/558/png-clipart-node-js-javascript-express-js-npm-react-github-angle-text.png',
+                    image: 'https://seeklogo.com/images/N/nodejs-logo-FBE122E377-seeklogo.com.png',
                 },
                 {
                     name: 'Express',
                     level: 'expert',
-                    image: 'https://w7.pngwing.com/pngs/925/447/png-transparent-express-js-node-js-javascript-mongodb-node-js-text-trademark-logo.png',
+                    image: 'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/express-js-icon.png',
                 },
                 {
                     name: 'Deno',
@@ -160,13 +160,18 @@ export const skillCategories = [
                 {
                     name: 'Ionic',
                     level: 'intermediate',
-                    image: 'https://banner2.cleanpng.com/20181126/aaz/kisspng-ionic-apache-cordova-software-framework-mobile-app-5bfc36aa6e20c6.7150215215432557224511.jpg',
+                    image: 'https://www.microtronixesolutions.com/images/2016/10/11/ionic.png',
                 },
                 {
                     name: 'React Native',
                     level: 'intermediate',
                     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png'
-                }
+                },
+                {
+                    name: 'Kotlin',
+                    level: 'intermediate',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/7/74/Kotlin_Icon.png'
+                },
             ]
         },
         {
@@ -180,12 +185,12 @@ export const skillCategories = [
                 {
                     name: 'mongoDB',
                     level: 'expert',
-                    image: 'https://toppng.com/uploads/preview/9kib-354x415-unnamed-mongodb-logo-sv-11562860723mgempnmrq3.png'
+                    image: 'https://www.pngall.com/wp-content/uploads/13/Mongodb-Transparent.png'
                 },
                 {
                     name: 'MySQL',
                     level: 'expert',
-                    image: 'https://cdn.freebiesupply.com/logos/large/2x/mysql-5-logo-png-transparent.png'
+                    image: 'https://cdn-icons-png.flaticon.com/512/5968/5968313.png'
                 },
                 {
                     name: 'mariaDB',
@@ -195,7 +200,7 @@ export const skillCategories = [
                 {
                     name: 'cockroachDB',
                     level: 'beginner',
-                    image: 'https://cdn.freebiesupply.com/logos/large/2x/cockroachdb-logo-png-transparent.png'
+                    image: 'https://avatars.githubusercontent.com/u/6748139?s=280&v=4'
                 },
                 {
                     name: 'oracleDB',
@@ -250,7 +255,7 @@ export const skillCategories = [
                 {
                     name: 'Kubernetes',
                     level: 'intermediate',
-                    image: 'https://assets.stickpng.com/images/58480a44cef1014c0b5e4917.png'
+                    image: 'https://juststickers.in/wp-content/uploads/2018/11/kubernetes-wordmark.png'
                 },
                 {
                     name: 'Vercel',

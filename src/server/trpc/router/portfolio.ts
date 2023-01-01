@@ -13,7 +13,7 @@ export default router({
                     prisma.about.findFirstOrThrow(),
                     prisma.experience.findMany(),
                     prisma.project.findMany(),
-                    prisma.skillCategory.findMany({ include: { skills: true } }),
+                    prisma.skillCategory.findMany({ include: { skills: true }, orderBy: { name: 'desc' } }),
                     prisma.social.findMany(),
                     prisma.hobby.findMany(),
                     prisma.about.updateMany({

@@ -1,3 +1,4 @@
+import type { ResponsiveValue } from '@chakra-ui/react';
 import {
     Box,
     Flex,
@@ -10,31 +11,40 @@ import {
     useColorModeValue,
     useBreakpointValue,
     useDisclosure,
-    useColorMode,
+    useColorMode
 } from '@chakra-ui/react';
 import {
     HamburgerIcon,
     CloseIcon,
     MoonIcon,
     SunIcon,
-    ExternalLinkIcon
 } from '@chakra-ui/icons';
+import { trpc } from '../utils/trpc';
 
-export default function Navbar({ resume }: { resume: string }) {
+export default function Navbar() {
+    const { data: portfolio, isLoading, error } =
+        trpc.portfolio.getPortfolio.useQuery(undefined, { refetchOnWindowFocus: false, refetchOnMount: false });
     const { isOpen, onToggle } = useDisclosure();
     const { colorMode, toggleColorMode } = useColorMode();
+    const txtAlign = useBreakpointValue({ base: 'center', md: 'left' }) as ResponsiveValue<'center' | 'left'>;
+
+    if (isLoading)
+        return <div>Loading</div>; // Add a spinner
+
+    if (!portfolio || error)
+        return <div>Error</div>;
 
     return (
         <Box>
             <Flex
-                bg={useColorModeValue('white', 'gray.800')}
-                color={useColorModeValue('gray.600', 'white')}
+                bg={colorMode === 'light' ? 'white' : 'gray.800'}
+                color={colorMode === 'light' ? 'gray.600' : 'white'}
                 minH={'60px'}
                 py={{ base: 2 }}
                 px={{ base: 4 }}
                 borderBottom={1}
                 borderStyle={'solid'}
-                borderColor={useColorModeValue('gray.200', 'gray.900')}
+                borderColor={colorMode === 'light' ? 'gray.200' : 'gray.900'}
                 align={'center'}
             >
                 <Flex
@@ -51,20 +61,20 @@ export default function Navbar({ resume }: { resume: string }) {
                 </Flex>
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
                     <Text
-                        textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+                        textAlign={txtAlign}
                         fontFamily={'cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
-                        color={useColorModeValue('gray.800', 'white')}>
-                        M
+                        color={colorMode === 'light' ? 'red.500' : 'white'}>
+                        {portfolio.about.firstName.charAt(0).toUpperCase()}
                     </Text>
                     <Text
-                        textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+                        textAlign={txtAlign}
                         fontFamily={'cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
-                        color={useColorModeValue('gray.800', 'white')}>
-                        H
+                        color={colorMode === 'light' ? 'gray.800' : 'red.500'}>
+                        {portfolio.about.lastName.charAt(0).toUpperCase()}
                     </Text>
 
                     <Flex display={{ base: 'none', md: 'flex' }} m='auto'>
@@ -73,24 +83,6 @@ export default function Navbar({ resume }: { resume: string }) {
                 </Flex>
 
                 <Flex alignItems={'center'}>
-                    <Link
-                        p={2}
-                        target='_blank'
-                        referrerPolicy='no-referrer'
-                        fontSize={'sm'}
-                        fontWeight={500}
-                        isExternal
-                        href={resume}
-                        _hover={{
-                            textDecoration: 'none',
-                            color: 'red.500',
-                        }}>
-                        <Flex p={2} alignItems='center'>
-                            <Text hidden={useBreakpointValue({ base: true, md: false })}>My Resume</Text>
-                            <ExternalLinkIcon boxSize='4' mx={6} />
-                        </Flex>
-
-                    </Link>
                     <Button onClick={toggleColorMode}>
                         {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
                     </Button>
