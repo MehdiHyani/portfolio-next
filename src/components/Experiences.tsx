@@ -82,7 +82,7 @@ const Experiences = () => {
                                     <SimpleGrid my={10} w='full' columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
                                         <StatsCard title='Experience Type' stat={experience.jobType.replace("Time", " time").toUpperCase()} />
                                         <StatsCard title='Experience Start Date' stat={moment(experience.startDate).format('MMMM Do YYYY')} />
-                                        <StatsCard title='Experience End Date' stat={moment(experience.endDate).format('MMMM Do YYYY')} />
+                                        <StatsCard title='Experience End Date' stat={!experience.isCurrent ? moment(experience.endDate).format('MMMM Do YYYY') : 'Current'} />
                                     </SimpleGrid>
                                     <Flex direction={dir as 'column' | 'row'} alignItems='center' justify='space-around' >
                                         <List pr={10}>

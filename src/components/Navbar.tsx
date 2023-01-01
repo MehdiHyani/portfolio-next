@@ -79,7 +79,7 @@ export default function Navbar() {
                         fontFamily={'cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
-                        color={colorMode === 'light' ? 'black' : 'red.500'}>
+                        color={colorMode === 'light' ? 'black' : 'customRed'}>
                         {portfolio.about.lastName.charAt(0).toUpperCase()}
                     </Text>
 
