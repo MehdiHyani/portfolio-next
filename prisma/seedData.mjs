@@ -11,6 +11,7 @@ export const about
     phoneNumber: '+212632933177',
     resume: 'https://mehdi-hyani.ams3.cdn.digitaloceanspaces.com/Portfolio/Mehdi_HYANI_CV.pdf',
     heroQuote: '"The computer was born to solve problems that did not exist before." --Bill Gates',
+    websitePreview : 'https://mehdi-hyani.ams3.cdn.digitaloceanspaces.com/Portfolio/preview.png',
 }
 
 export const skillCategories = [

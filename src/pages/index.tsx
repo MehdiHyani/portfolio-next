@@ -34,14 +34,14 @@ const Home: NextPage = () => {
                 <meta property="og:url" content="https://mehdihyani.me" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={portfolio.about.bio} />
-                <meta property="og:image" content="/preview.png" />
+                <meta property="og:image" content={portfolio.about.websitePreview} />
 
                 {/* <!-- Twitter --> */}
                 <meta property="twitter:card" content="summary_large_image" />
                 <meta property="twitter:url" content="https://mehdihyani.me" />
                 <meta property="twitter:title" content={title} />
                 <meta property="twitter:description" content={portfolio.about.bio} />
-                <meta property="twitter:image" content="/preview.png" />
+                <meta property="twitter:image" content={portfolio.about.websitePreview} />
             </Head>
             <main>
                 <Navbar />

@@ -20,6 +20,7 @@ model About {
   bio           String
   email         String
   heroQuote     String?
+  websitePreview String
   numberOfViews BigInt  @default(0) //hopefully big int :)
 
   createdAt DateTime @default(now())
