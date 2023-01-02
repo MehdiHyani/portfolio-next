@@ -10,6 +10,7 @@ import { formatFullName } from "../utils/helpers";
 import Skills from "../components/Skills";
 import Contact from "../components/Contact";
 import Experiences from "../components/Experiences";
+import Projects from "../components/Projects";
 
 const Home: NextPage = () => {
     const router = useRouter();
@@ -21,7 +22,7 @@ const Home: NextPage = () => {
 
     if (!portfolio || error) {
         router.push('/500')
-        return <></>;
+        return <div></div>;
     }
 
     const title = `${formatFullName(portfolio.about.firstName, portfolio.about.lastName)}'s Portfolio`
@@ -54,6 +55,7 @@ const Home: NextPage = () => {
                 <Hero />
                 <Skills />
                 <Experiences />
+                <Projects />
                 <Contact />
                 <Footer />
             </main>

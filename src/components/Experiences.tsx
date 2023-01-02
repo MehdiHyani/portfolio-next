@@ -53,7 +53,7 @@ const Experiences = () => {
 
     if (!portfolio || error) {
         router.push('/500')
-        return <></>;
+        return <div></div>;
     }
 
     return (

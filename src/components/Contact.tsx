@@ -40,7 +40,7 @@ export default function Contact() {
 
     if (!portfolio || error) {
         router.push('/500')
-        return <></>;
+        return <div></div>;
     }
 
     return (

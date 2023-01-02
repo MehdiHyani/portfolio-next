@@ -20,12 +20,12 @@ const Skills = () => {
 
     if (!portfolio || error) {
         router.push('/500')
-        return <></>;
+        return <div></div>;
     }
 
     return (
         <section id='skills'>
-            <Box p={4}>
+            <Box py={10}>
                 <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
                     <Heading fontSize={'3xl'}>My skills</Heading>
                     <Text color={'gray.600'} fontSize={'xl'}>

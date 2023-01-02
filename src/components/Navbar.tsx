@@ -20,6 +20,7 @@ import {
     SunIcon,
 } from '@chakra-ui/icons';
 import { trpc } from '../utils/trpc';
+import { formatFullName } from '../utils/helpers';
 
 export default function Navbar() {
     const { data: portfolio, isLoading, error } =
@@ -68,28 +69,27 @@ export default function Navbar() {
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
                     <Text
                         textAlign={txtAlign}
-                        fontFamily={'cursive'}
+                        fontFamily={'\'Pacifico\', cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
-                        color={colorMode === 'light' ? 'customBlue' : 'white'}>
-                        {portfolio.about.firstName.charAt(0).toUpperCase()}
+                        color={colorMode === 'light' ? 'customBlue' : 'customRed'}>
+                        {portfolio.about.firstName}&nbsp;
                     </Text>
                     <Text
                         textAlign={txtAlign}
-                        fontFamily={'cursive'}
+                        fontFamily={'\'Pacifico\', cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
-                        color={colorMode === 'light' ? 'black' : 'customRed'}>
-                        {portfolio.about.lastName.charAt(0).toUpperCase()}
+                        color={colorMode === 'light' ? 'customRed' : 'customBlue'}>
+                        {portfolio.about.lastName.toUpperCase()}
                     </Text>
-
                     <Flex display={{ base: 'none', md: 'flex' }} m='auto'>
                         <DesktopNav />
                     </Flex>
                 </Flex>
 
                 <Flex alignItems={'center'}>
-                    <Button mr={10} onClick={toggleColorMode}>
+                    <Button mr={{ base: 2, md: 10 }} onClick={toggleColorMode}>
                         {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
                     </Button>
                 </Flex>
@@ -174,15 +174,15 @@ const NAV_ITEMS: Array<{ label: string, href: string }> = [
         href: '#about',
     },
     {
-        label: 'Some of my skills',
+        label: 'My skills',
         href: '#skills'
     },
     {
-        label: 'My previous experience',
+        label: 'Previous experiences',
         href: '#experience'
     },
     {
-        label: 'Some of my projects',
+        label: 'My projects',
         href: '#projects'
     },
     {

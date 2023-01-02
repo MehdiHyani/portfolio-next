@@ -2,14 +2,18 @@ import {
     Box,
     chakra,
     Container,
+    HStack,
     Stack,
     Text,
     useBreakpointValue,
+    useColorMode,
     useColorModeValue,
     VisuallyHidden,
 } from '@chakra-ui/react';
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import type { ReactNode } from 'react';
+import { useRouter } from 'next/router';
+import { trpc } from '../utils/trpc';
 
 const SocialButton = ({
     children,
@@ -43,6 +47,20 @@ const SocialButton = ({
 };
 
 export default function Footer() {
+    const router = useRouter();
+    const { data: portfolio, isLoading, error } =
+        trpc.portfolio.getPortfolio.useQuery(undefined, { refetchOnWindowFocus: false, refetchOnMount: false });
+
+    const { colorMode } = useColorMode();
+
+    if (isLoading)
+        return <div>Loading</div>; // Add a spinner
+
+    if (!portfolio || error) {
+        router.push('/500')
+        return <div></div>;
+    }
+
     return (
         <Box
             bg={useColorModeValue('gray.50', 'gray.900')}
@@ -60,13 +78,25 @@ export default function Footer() {
                 spacing={4}
                 justify={{ base: 'center', md: 'space-between' }}
                 align={{ base: 'center', md: 'center' }}>
-                <Text
-                    textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-                    fontFamily={'cursive'}
-                    fontWeight='bold'
-                    color={useColorModeValue('gray.800', 'white')}>
-                    Mehdi Hyani
-                </Text>
+                <HStack >
+                    <Text
+                        textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+                        fontFamily={'\'Pacifico\', cursive'}
+                        fontWeight='bold'
+                        fontSize='2xl'
+                        color={colorMode === 'light' ? 'customBlue' : 'customRed'}>
+                        {portfolio.about.firstName}&nbsp;
+                    </Text>
+                    <Text
+                        textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+                        fontFamily={'\'Pacifico\', cursive'}
+                        fontWeight='bold'
+                        fontSize='2xl'
+                        color={colorMode === 'light' ? 'customRed' : 'customBlue'}>
+                        {portfolio.about.lastName.toUpperCase()}
+                    </Text>
+
+                </HStack>
                 <Text>© {new Date().getFullYear()} Mehdi HYANI. All rights reserved</Text>
                 <Stack direction={'row'} spacing={6}>
                     <SocialButton label={'Twitter'} href={'#'}>
