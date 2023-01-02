@@ -26,9 +26,11 @@ import {
     MdOutlineEmail,
 } from 'react-icons/md';
 import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
+import { useRouter } from 'next/router';
 import { trpc } from '../utils/trpc';
 
 export default function Contact() {
+    const router = useRouter();
     const { data: portfolio, isLoading, error } =
         trpc.portfolio.getPortfolio.useQuery(undefined, { refetchOnWindowFocus: false, refetchOnMount: false });
     const { colorMode } = useColorMode();
@@ -36,8 +38,10 @@ export default function Contact() {
     if (isLoading)
         return <div>Loading</div>; // Add a spinner
 
-    if (!portfolio || error)
-        return <div>Error</div>;
+    if (!portfolio || error) {
+        router.push('/500')
+        return <></>;
+    }
 
     return (
         <Container maxW="full" mt={0} centerContent overflow="hidden">

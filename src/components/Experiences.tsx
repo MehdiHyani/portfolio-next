@@ -1,12 +1,14 @@
+import { useRouter } from 'next/router';
 import {
-    Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Center, Container, Flex, Heading, HStack, Image, List, ListIcon, ListItem, SimpleGrid, Stack, Stat, StatLabel, StatNumber, Text, useBreakpointValue, useColorMode, useColorModeValue
+    Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box,
+    Container, Flex, Heading, Image, List, ListIcon, ListItem, SimpleGrid,
+    Stack, Stat, StatLabel, StatNumber, Text, useBreakpointValue, useColorMode, useColorModeValue
 } from '@chakra-ui/react'
 import Link from 'next/link';
 import React from 'react'
-import { MdBuildCircle, MdSettings } from 'react-icons/md';
+import { MdSettings } from 'react-icons/md';
 import moment from 'moment';
 import { trpc } from '../utils/trpc';
-import { formatDateDifference } from '../utils/helpers';
 import { customColors } from '../utils/theme';
 
 interface StatsCardProps {
@@ -39,6 +41,7 @@ const StatsCard = (props: StatsCardProps) => {
 }
 
 const Experiences = () => {
+    const router = useRouter();
     const { data: portfolio, isLoading, error } =
         trpc.portfolio.getPortfolio.useQuery(undefined, { refetchOnWindowFocus: false, refetchOnMount: false });
 
@@ -48,8 +51,10 @@ const Experiences = () => {
     if (isLoading)
         return <div>Loading</div>; // Add a spinner
 
-    if (!portfolio || error)
-        return <div>Error</div>;
+    if (!portfolio || error) {
+        router.push('/500')
+        return <></>;
+    }
 
     return (
         <section id='experience'>

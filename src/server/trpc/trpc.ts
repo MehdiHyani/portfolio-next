@@ -1,18 +1,14 @@
-import { initTRPC } from "@trpc/server";
+import { initTRPC } from '@trpc/server';
 import superjson from "superjson";
 
-import { type Context } from "./context";
-
-const t = initTRPC.context<Context>().create({
+// Avoid exporting the entire t-object
+// since it's not very descriptive.
+// For instance, the use of a t variable
+// is common in i18n libraries.
+const t = initTRPC.create({
   transformer: superjson,
-  errorFormatter({ shape }) {
-    return shape;
-  },
 });
 
+// Base router and procedure helpers
 export const router = t.router;
-
-/**
- * Unprotected procedure
- **/
 export const procedure = t.procedure;

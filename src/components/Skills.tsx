@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import {
     Box, Container, Heading, HStack, Stack, Text, VStack, Image, Flex, useColorMode,
@@ -9,6 +10,7 @@ import { getValueForSkillLevel } from '../utils/helpers';
 // import Image from 'next/image';
 
 const Skills = () => {
+    const router = useRouter();
     const { data: portfolio, isLoading, error } =
         trpc.portfolio.getPortfolio.useQuery(undefined, { refetchOnWindowFocus: false, refetchOnMount: false });
     const { colorMode } = useColorMode();
@@ -16,8 +18,10 @@ const Skills = () => {
     if (isLoading)
         return <div>Loading</div>; // Add a spinner
 
-    if (!portfolio || error)
-        return <div>Error</div>;
+    if (!portfolio || error) {
+        router.push('/500')
+        return <></>;
+    }
 
     return (
         <section id='skills'>

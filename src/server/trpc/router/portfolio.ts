@@ -1,10 +1,11 @@
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 import { TRPCError } from "@trpc/server";
+import { prisma } from "../../db/client";
 import { procedure, router } from "../trpc";
 
 export default router({
     getPortfolio: procedure
-        .query(async ({ ctx: { prisma } }) => {
+        .query(async () => {
             if(!prisma)
                 throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR', message: 'Prisma not initialized' })
             

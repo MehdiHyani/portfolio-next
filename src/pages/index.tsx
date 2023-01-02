@@ -1,6 +1,7 @@
 import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from 'next/router';
 import Navbar from "../components/Navbar";
 import { trpc } from "../utils/trpc";
 import Hero from "../components/Hero";
@@ -11,14 +12,17 @@ import Contact from "../components/Contact";
 import Experiences from "../components/Experiences";
 
 const Home: NextPage = () => {
+    const router = useRouter();
     const { data: portfolio, isLoading, error } =
         trpc.portfolio.getPortfolio.useQuery(undefined, { refetchOnWindowFocus: false, refetchOnMount: false });
 
     if (isLoading)
         return <div>Loading</div>; // Add a spinner
 
-    if (!portfolio || error)
-        return <div>Error</div>;
+    if (!portfolio || error) {
+        router.push('/500')
+        return <></>;
+    }
 
     const title = `${formatFullName(portfolio.about.firstName, portfolio.about.lastName)}'s Portfolio`
 

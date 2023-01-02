@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import type {
     IconProps
@@ -24,6 +25,7 @@ import { formatFullName } from '../utils/helpers';
 import { trpc } from '../utils/trpc';
 
 export default function Hero() {
+    const router = useRouter();
     const { data: portfolio, isLoading, error } =
         trpc.portfolio.getPortfolio.useQuery(undefined, { refetchOnWindowFocus: false, refetchOnMount: false });
     const [wavePhrase, setWavePhrase] = useState<number>(0);
@@ -45,8 +47,10 @@ export default function Hero() {
     if (isLoading)
         return <div>Loading</div>; // Add a spinner
 
-    if (!portfolio || error)
-        return <div>Error</div>;
+    if (!portfolio || error) {
+        router.push('/500')
+        return <></>;
+    }
 
     return (
         <section id='about'>
