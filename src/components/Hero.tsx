@@ -18,7 +18,7 @@ import {
     createIcon,
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { heroWavePhrases } from '../utils/constants';
 import { formatFullName } from '../utils/helpers';
 import { trpc } from '../utils/trpc';
@@ -29,20 +29,24 @@ export default function Hero() {
     const [wavePhrase, setWavePhrase] = useState<number>(0);
     const { colorMode } = useColorMode();
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setWavePhrase(p => {
+                if (p < heroWavePhrases.length - 1)
+                    return p + 1;
+
+                return 0;
+            })
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, []);
+
     if (isLoading)
         return <div>Loading</div>; // Add a spinner
 
     if (!portfolio || error)
         return <div>Error</div>;
-
-    setTimeout(() => {
-        setWavePhrase(p => {
-            if (p < heroWavePhrases.length - 1)
-                return p + 1;
-
-            return 0;
-        })
-    }, 2000);
 
     return (
         <section id='about'>
