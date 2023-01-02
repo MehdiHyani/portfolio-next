@@ -86,10 +86,6 @@ const Experiences = () => {
                                     </SimpleGrid>
                                     <Flex direction={dir as 'column' | 'row'} alignItems='center' justify='space-around' >
                                         <List pr={10}>
-                                            <ListItem alignItems='center' fontSize='lg'>
-                                                <ListIcon as={MdBuildCircle} boxSize={5} color={colorMode === 'dark' ? 'customBlue' : 'customRed'} />
-                                                Job key responsibilities :
-                                            </ListItem>
                                             {experience.jobResponsibilities.map((responsibility, j) => (
                                                 <ListItem key={`resp-${j}`}>
                                                     <ListIcon as={MdSettings} boxSize={4} color={colorMode === 'light' ? 'customBlue' : 'customRed'} />
