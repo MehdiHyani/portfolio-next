@@ -1,5 +1,5 @@
-import { Center, Container, Flex, Heading, Text, useColorModeValue, VStack } from '@chakra-ui/react';
-import { CSSProperties, useState } from "react";
+import { Center, Container, Text, useColorModeValue, VStack } from '@chakra-ui/react';
+import { useState } from "react";
 import React from 'react';
 import DotLoader from "react-spinners/BeatLoader";
 import { loadingPhrases } from '../utils/constants';
