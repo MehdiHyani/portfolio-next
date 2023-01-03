@@ -10,6 +10,7 @@ import { MdSettings } from 'react-icons/md';
 import moment from 'moment';
 import { trpc } from '../utils/trpc';
 import { customColors } from '../utils/theme';
+import LoadingSpinner from './LoadingSpinner';
 
 interface StatsCardProps {
     title: string;
@@ -49,7 +50,7 @@ const Experiences = () => {
     const { colorMode } = useColorMode();
 
     if (isLoading)
-        return <div>Loading</div>; // Add a spinner
+        return <LoadingSpinner />;
 
     if (!portfolio || error) {
         router.push('/500')

@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/react';
 import { trpc } from '../utils/trpc';
 import { getValueForSkillLevel } from '../utils/helpers';
-// import Image from 'next/image';
+import LoadingSpinner from './LoadingSpinner';
 
 const Skills = () => {
     const router = useRouter();
@@ -16,7 +16,7 @@ const Skills = () => {
     const { colorMode } = useColorMode();
 
     if (isLoading)
-        return <div>Loading</div>; // Add a spinner
+        return <LoadingSpinner />;
 
     if (!portfolio || error) {
         router.push('/500')

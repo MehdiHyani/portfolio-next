@@ -20,6 +20,7 @@ import {
     SunIcon,
 } from '@chakra-ui/icons';
 import { trpc } from '../utils/trpc';
+import LoadingSpinner from './LoadingSpinner';
 
 export default function Navbar() {
     const { data: portfolio, isLoading, error } =
@@ -29,7 +30,7 @@ export default function Navbar() {
     const txtAlign = useBreakpointValue({ base: 'center', md: 'left' }) as ResponsiveValue<'center' | 'left'>;
 
     if (isLoading)
-        return <div>Loading</div>; // Add a spinner
+        return <LoadingSpinner />;
 
     if (!portfolio || error)
         return <div>Error</div>;

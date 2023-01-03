@@ -11,6 +11,7 @@ import Skills from "../components/Skills";
 import Contact from "../components/Contact";
 import Experiences from "../components/Experiences";
 import Projects from "../components/Projects";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Home: NextPage = () => {
     const router = useRouter();
@@ -18,7 +19,7 @@ const Home: NextPage = () => {
         trpc.portfolio.getPortfolio.useQuery(undefined, { refetchOnWindowFocus: false, refetchOnMount: false });
 
     if (isLoading)
-        return <div>Loading</div>; // Add a spinner
+        return <LoadingSpinner />;
 
     if (!portfolio || error) {
         router.push('/500')

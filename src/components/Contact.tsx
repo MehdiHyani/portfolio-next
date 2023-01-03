@@ -14,6 +14,7 @@ import { trpc } from '../utils/trpc';
 import { TRPCClientError } from '@trpc/client';
 import { type FormEvent, useState } from 'react';
 import { EmailIcon } from '@chakra-ui/icons';
+import LoadingSpinner from './LoadingSpinner';
 
 export default function Contact() {
     const router = useRouter();
@@ -50,7 +51,7 @@ export default function Contact() {
     const { colorMode } = useColorMode();
 
     if (isLoading)
-        return <div>Loading</div>; // Add a spinner
+        return <LoadingSpinner />;
 
     if (!portfolio || error) {
         router.push('/500')
@@ -64,8 +65,8 @@ export default function Contact() {
                 <br />
 
                 <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Whether it&apos;s only for a quick chat or for a professional inquiry, you are welcome to chat with me anytime. 😊😊</p>
-                <form onSubmit={handleSendMessage} action="#" id='email-form' className="space-y-8">
-                    <FormControl isInvalid={email === ''} isRequired>
+                <form onSubmit={handleSendMessage} id='email-form' className="space-y-8">
+                    <FormControl isRequired>
                         <FormLabel>Email address</FormLabel>
                         <Input
                             value={email}
@@ -75,7 +76,7 @@ export default function Contact() {
                             placeholder="secret.admirer@example.com"
                         />
                     </FormControl>
-                    <FormControl isInvalid={subject === ''} isRequired>
+                    <FormControl isRequired>
                         <FormLabel>Subject</FormLabel>
                         <Input
                             value={subject}
@@ -85,7 +86,7 @@ export default function Contact() {
                             placeholder="Hiring request..."
                         />
                     </FormControl>
-                    <FormControl isInvalid={message === ''} isRequired>
+                    <FormControl isRequired>
                         <FormLabel>Message</FormLabel>
                         <Textarea
                             form='email-form'

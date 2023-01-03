@@ -1,6 +1,5 @@
 import {
     Box,
-    chakra,
     Container,
     HStack,
     Image,
@@ -9,44 +8,10 @@ import {
     Text,
     useBreakpointValue,
     useColorMode,
-    useColorModeValue,
-    VisuallyHidden,
 } from '@chakra-ui/react';
-import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
-import type { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import { trpc } from '../utils/trpc';
-
-const SocialButton = ({
-    children,
-    label,
-    href,
-}: {
-    children: ReactNode;
-    label: string;
-    href: string;
-}) => {
-    return (
-        <chakra.button
-            bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
-            rounded={'full'}
-            w={8}
-            h={8}
-            cursor={'pointer'}
-            as={'a'}
-            href={href}
-            display={'inline-flex'}
-            alignItems={'center'}
-            justifyContent={'center'}
-            transition={'background 0.3s ease'}
-            _hover={{
-                bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
-            }}>
-            <VisuallyHidden>{label}</VisuallyHidden>
-            {children}
-        </chakra.button>
-    );
-};
+import LoadingSpinner from './LoadingSpinner';
 
 export default function Footer() {
     const router = useRouter();
@@ -56,7 +21,7 @@ export default function Footer() {
     const { colorMode } = useColorMode();
 
     if (isLoading)
-        return <div>Loading</div>; // Add a spinner
+        return <LoadingSpinner />;
 
     if (!portfolio || error) {
         router.push('/500')

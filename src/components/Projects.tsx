@@ -8,6 +8,7 @@ import type { Project } from '@prisma/client';
 import { trpc } from '../utils/trpc';
 import { projectImages } from '../utils/constants';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
+import LoadingSpinner from './LoadingSpinner';
 
 const ProjectCard = ({ project, index }: { project: Project, index: number }) => (
     <Card
@@ -62,7 +63,7 @@ const Projects = () => {
         trpc.portfolio.getPortfolio.useQuery(undefined, { refetchOnWindowFocus: false, refetchOnMount: false });
 
     if (isLoading)
-        return <div>Loading</div>; // Add a spinner
+        return <LoadingSpinner />;
 
     if (!portfolio || error) {
         router.push('/500')
