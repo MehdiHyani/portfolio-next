@@ -7,6 +7,11 @@ import { z } from "zod";
  */
 export const serverSchema = z.object({
   DATABASE_URL: z.string().url(),
+  SMTP_HOST: z.string(),
+  SMTP_PORT: z.enum(["25", "465", "587", "2525"]),
+  SMTP_USERNAME: z.string(),
+  SMTP_PASSWORD: z.string(),
+  SMTP_FROM: z.string().email(),
   NODE_ENV: z.enum(["development", "test", "production"]),
 });
 

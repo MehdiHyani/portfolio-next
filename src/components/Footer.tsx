@@ -84,8 +84,8 @@ export default function Footer() {
                         fontFamily={'\'Pacifico\', cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
-                        color={colorMode === 'light' ? 'customBlue' : 'customRed'}>
-                        {portfolio.about.firstName}&nbsp;
+                        color={colorMode === 'light' ? 'gray.700' : 'white'}>
+                        {portfolio.about.firstName.toUpperCase()[0]}
                     </Text>
                     <Text
                         textAlign={textAlign}
@@ -93,7 +93,7 @@ export default function Footer() {
                         fontWeight='bold'
                         fontSize='2xl'
                         color={colorMode === 'light' ? 'customRed' : 'customBlue'}>
-                        {portfolio.about.lastName.toUpperCase()}
+                        {portfolio.about.lastName.toUpperCase()[0]}
                     </Text>
 
                 </HStack>

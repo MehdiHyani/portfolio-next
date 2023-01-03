@@ -1,38 +1,52 @@
 import {
-    Container,
-    Flex,
-    Box,
-    Heading,
-    Text,
-    IconButton,
     Button,
-    VStack,
-    HStack,
-    Wrap,
-    WrapItem,
+    Container,
     FormControl,
     FormLabel,
+    Heading,
     Input,
-    InputGroup,
-    InputLeftElement,
     Textarea,
     useColorMode,
+    useToast,
 } from '@chakra-ui/react';
-import {
-    MdPhone,
-    MdEmail,
-    MdLocationOn,
-    MdFacebook,
-    MdOutlineEmail,
-} from 'react-icons/md';
-import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
 import { useRouter } from 'next/router';
 import { trpc } from '../utils/trpc';
+import { TRPCClientError } from '@trpc/client';
+import { type FormEvent, useState } from 'react';
+import { EmailIcon } from '@chakra-ui/icons';
 
 export default function Contact() {
     const router = useRouter();
     const { data: portfolio, isLoading, error } =
         trpc.portfolio.getPortfolio.useQuery(undefined, { refetchOnWindowFocus: false, refetchOnMount: false });
+    const toast = useToast();
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [message, setMessage] = useState('');
+
+    const { mutateAsync: sendMessage } = trpc.message.sendMessage.useMutation();
+
+    const handleSendMessage = async (e: FormEvent<HTMLFormElement>) => {
+        try {
+            e.preventDefault();
+            await sendMessage({ email: 'test@test.com', message: 'Test message', subject: 'Test Subject' });
+            toast({
+                variant: 'solid',
+                status: 'success',
+                description: 'I received your message. We\'ll be in touch ><',
+                title: 'Email sent'
+            })
+        } catch (error) {
+            if (error instanceof TRPCClientError)
+                toast({
+                    variant: 'solid',
+                    status: 'error',
+                    description: error.message,
+                    title: 'Error'
+                })
+        }
+    }
+
     const { colorMode } = useColorMode();
 
     if (isLoading)
@@ -44,141 +58,57 @@ export default function Contact() {
     }
 
     return (
-        <Container maxW="full" mt={0} centerContent overflow="hidden">
-            <Flex>
-                <Box
-                    bg={colorMode === 'light' ? 'customBlue' : 'white'}
-                    color={colorMode === 'light' ? 'white' : 'black'}
-                    borderRadius="lg"
-                    m={{ sm: 4, md: 16, lg: 10 }}
-                    p={{ sm: 5, md: 5, lg: 16 }}>
-                    <Box p={4}>
-                        <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}>
-                            <WrapItem>
-                                <Box>
-                                    <Heading>Contact</Heading>
-                                    <Text mt={{ sm: 3, md: 3, lg: 5 }} color="gray.500">
-                                        Fill up the form below to contact
-                                    </Text>
-                                    <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
-                                        <VStack pl={0} spacing={3} alignItems="flex-start">
-                                            <Button
-                                                size="md"
-                                                height="48px"
-                                                width="200px"
-                                                variant="ghost"
-                                                // color="#DCE2FF"
-                                                _hover={{ border: '2px solid #1C6FEB' }}
-                                                leftIcon={<MdPhone color="#1970F1" size="20px" />}>
-                                                +91-988888888
-                                            </Button>
-                                            <Button
-                                                size="md"
-                                                height="48px"
-                                                width="200px"
-                                                variant="ghost"
-                                                // color="#DCE2FF"
-                                                _hover={{ border: '2px solid #1C6FEB' }}
-                                                leftIcon={<MdEmail color="#1970F1" size="20px" />}>
-                                                hello@abc.com
-                                            </Button>
-                                            <Button
-                                                size="md"
-                                                height="48px"
-                                                width="200px"
-                                                variant="ghost"
-                                                // color="#DCE2FF"
-                                                _hover={{ border: '2px solid #1C6FEB' }}
-                                                leftIcon={<MdLocationOn color="#1970F1" size="20px" />}>
-                                                Karnavati, India
-                                            </Button>
-                                        </VStack>
-                                    </Box>
-                                    <HStack
-                                        mt={{ lg: 10, md: 10 }}
-                                        spacing={5}
-                                        px={5}
-                                        alignItems="flex-start">
-                                        <IconButton
-                                            aria-label="facebook"
-                                            variant="ghost"
-                                            size="lg"
-                                            isRound={true}
-                                            _hover={{ bg: '#0D74FF' }}
-                                            icon={<MdFacebook size="28px" />}
-                                        />
-                                        <IconButton
-                                            aria-label="github"
-                                            variant="ghost"
-                                            size="lg"
-                                            isRound={true}
-                                            _hover={{ bg: '#0D74FF' }}
-                                            icon={<BsGithub size="28px" />}
-                                        />
-                                        <IconButton
-                                            aria-label="discord"
-                                            variant="ghost"
-                                            size="lg"
-                                            isRound={true}
-                                            _hover={{ bg: '#0D74FF' }}
-                                            icon={<BsDiscord size="28px" />}
-                                        />
-                                    </HStack>
-                                </Box>
-                            </WrapItem>
-                            <WrapItem>
-                                <Box bg="white" borderRadius="lg">
-                                    <Box m={8} color="#0B0E3F">
-                                        <VStack spacing={5}>
-                                            <FormControl id="name">
-                                                <FormLabel>Your Name</FormLabel>
-                                                <InputGroup borderColor="#E0E1E7">
-                                                    <InputLeftElement
-                                                        pointerEvents="none"
-                                                    >
-                                                        <BsPerson color="gray.800" />
-                                                    </InputLeftElement>
-                                                    <Input type="text" size="md" />
-                                                </InputGroup>
-                                            </FormControl>
-                                            <FormControl id="name">
-                                                <FormLabel>Mail</FormLabel>
-                                                <InputGroup borderColor="#E0E1E7">
-                                                    <InputLeftElement
-                                                        pointerEvents="none"
-                                                    >
-                                                        <MdOutlineEmail color="gray.800" />
-                                                    </InputLeftElement>
-                                                    <Input type="text" size="md" />
-                                                </InputGroup>
-                                            </FormControl>
-                                            <FormControl id="name">
-                                                <FormLabel>Message</FormLabel>
-                                                <Textarea
-                                                    borderColor="gray.300"
-                                                    _hover={{
-                                                        borderRadius: 'gray.300',
-                                                    }}
-                                                    placeholder="message"
-                                                />
-                                            </FormControl>
-                                            <FormControl id="name" float="right">
-                                                <Button
-                                                    variant="solid"
-                                                    bg="#0D74FF"
-                                                    color="white"
-                                                    _hover={{}}>
-                                                    Send Message
-                                                </Button>
-                                            </FormControl>
-                                        </VStack>
-                                    </Box>
-                                </Box>
-                            </WrapItem>
-                        </Wrap>
-                    </Box>
-                </Box>
-            </Flex>
+        <Container id='contact' className="">
+            <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+                <Heading textAlign={'center'} fontSize={'3xl'}>My Projects</Heading>
+                <br />
+
+                <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Whether it&apos;s only for a quick chat or for a professional inquiry, you are welcome to chat with me anytime. 😊😊</p>
+                <form onSubmit={handleSendMessage} action="#" id='email-form' className="space-y-8">
+                    <FormControl isInvalid={email === ''} isRequired>
+                        <FormLabel>Email address</FormLabel>
+                        <Input
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            form='email-form'
+                            type='email'
+                            placeholder="secret.admirer@example.com"
+                        />
+                    </FormControl>
+                    <FormControl isInvalid={subject === ''} isRequired>
+                        <FormLabel>Subject</FormLabel>
+                        <Input
+                            value={subject}
+                            onChange={(e) => setSubject(e.target.value)}
+                            form='email-form'
+                            type='text'
+                            placeholder="Hiring request..."
+                        />
+                    </FormControl>
+                    <FormControl isInvalid={message === ''} isRequired>
+                        <FormLabel>Message</FormLabel>
+                        <Textarea
+                            form='email-form'
+                            rows={6}
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            placeholder="Hello Mehdi, I really like your portfolio 😊..."
+                        />
+                    </FormControl>
+                    <Button
+                        type='submit'
+                        alignItems={'center'}
+                        _hover={{
+                            bg: colorMode === 'light' ? 'customBlueFocused' : 'customRed',
+                        }}
+                        variant='solid'
+                        bg={colorMode === 'light' ? 'customBlue' : 'customRedFocused'}
+                        rightIcon={<EmailIcon />}
+                    >
+                        Send Message
+                    </Button>
+                </form>
+            </div>
         </Container>
     );
 }

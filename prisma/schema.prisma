@@ -87,3 +87,13 @@ model Hobby {
   name String @id
   image String
 }
+
+model Message {
+  id    String     @id @default(uuid())
+  email String
+  subject String
+  content String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
