@@ -1,7 +1,7 @@
 import { Center, Container, Flex, Heading, Text, useColorModeValue, VStack } from '@chakra-ui/react';
 import { CSSProperties, useState } from "react";
 import React from 'react';
-import DotLoader from "react-spinners/ClimbingBoxLoader";
+import DotLoader from "react-spinners/BeatLoader";
 import { loadingPhrases } from '../utils/constants';
 import { customColors } from '../utils/theme';
 
@@ -26,12 +26,11 @@ const LoadingSpinner = () => {
                     <DotLoader
                         color={useColorModeValue(customColors.customBlue, customColors.customRed)}
                         loading
-                        size={20}
+                        size={30}
                         aria-label="Loading Spinner"
                         data-testid="loader"
 
                     />
-                    <br />
                     <br />
                     <br />
                     <Text textAlign={'center'} fontSize={'md'}>{phrase}</Text>
