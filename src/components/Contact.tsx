@@ -29,7 +29,7 @@ export default function Contact() {
     const handleSendMessage = async (e: FormEvent<HTMLFormElement>) => {
         try {
             e.preventDefault();
-            await sendMessage({ email: 'test@test.com', message: 'Test message', subject: 'Test Subject' });
+            await sendMessage({ email, message, subject });
             toast({
                 variant: 'solid',
                 status: 'success',
