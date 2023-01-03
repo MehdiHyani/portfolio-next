@@ -1,6 +1,6 @@
 import {
     Stack, Heading, Container, Box, Text, Card, Image, CardBody,
-    CardFooter, Button, SimpleGrid, useColorMode, Badge, Flex, useColorModeValue, Link
+    CardFooter, Button, SimpleGrid, Badge, Flex, useColorModeValue, Link
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router';
 import React from 'react';

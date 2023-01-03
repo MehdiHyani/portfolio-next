@@ -50,7 +50,7 @@ export default function Footer() {
     const router = useRouter();
     const { data: portfolio, isLoading, error } =
         trpc.portfolio.getPortfolio.useQuery(undefined, { refetchOnWindowFocus: false, refetchOnMount: false });
-
+    const textAlign: 'center' | 'left' = useBreakpointValue({ base: 'center', md: 'left' }) ?? 'center';
     const { colorMode } = useColorMode();
 
     if (isLoading)
@@ -63,11 +63,11 @@ export default function Footer() {
 
     return (
         <Box
-            bg={useColorModeValue('gray.50', 'gray.900')}
-            color={useColorModeValue('gray.700', 'gray.200')}
+            bg={colorMode === 'light' ? 'gray.50' : 'gray.900'}
+            color={colorMode === 'light' ? 'gray.700' : 'gray.200'}
             borderStyle='outset'
             borderTop='1px'
-            borderColor={useColorModeValue('customBlueFocused', 'customRedFocused')}
+            borderColor={colorMode === 'light' ? 'customBlueFocused' : 'customRedFocused'}
         >
 
             <Container
@@ -80,7 +80,7 @@ export default function Footer() {
                 align={{ base: 'center', md: 'center' }}>
                 <HStack >
                     <Text
-                        textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+                        textAlign={textAlign}
                         fontFamily={'\'Pacifico\', cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
@@ -88,7 +88,7 @@ export default function Footer() {
                         {portfolio.about.firstName}&nbsp;
                     </Text>
                     <Text
-                        textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+                        textAlign={textAlign}
                         fontFamily={'\'Pacifico\', cursive'}
                         fontWeight='bold'
                         fontSize='2xl'

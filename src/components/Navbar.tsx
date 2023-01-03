@@ -20,7 +20,6 @@ import {
     SunIcon,
 } from '@chakra-ui/icons';
 import { trpc } from '../utils/trpc';
-import { formatFullName } from '../utils/helpers';
 
 export default function Navbar() {
     const { data: portfolio, isLoading, error } =
