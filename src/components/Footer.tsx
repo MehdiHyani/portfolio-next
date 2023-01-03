@@ -3,6 +3,8 @@ import {
     chakra,
     Container,
     HStack,
+    Image,
+    Link,
     Stack,
     Text,
     useBreakpointValue,
@@ -99,15 +101,17 @@ export default function Footer() {
                 </HStack>
                 <Text>© {new Date().getFullYear()} Mehdi HYANI. All rights reserved</Text>
                 <Stack direction={'row'} spacing={6}>
-                    <SocialButton label={'Twitter'} href={'#'}>
-                        <FaTwitter />
-                    </SocialButton>
-                    <SocialButton label={'YouTube'} href={'#'}>
-                        <FaYoutube />
-                    </SocialButton>
-                    <SocialButton label={'Instagram'} href={'#'}>
-                        <FaInstagram />
-                    </SocialButton>
+                    {
+                        portfolio.socials.map((social) => (
+                            <Link key={social.name} href={social.url} isExternal referrerPolicy='no-referrer'>
+                                <Image
+                                    src={social.image}
+                                    alt={social.name}
+                                    boxSize={'16px'}
+                                />
+                            </Link>
+                        ))
+                    }
                 </Stack>
             </Container>
         </Box>
