@@ -72,7 +72,7 @@ export default function Navbar() {
                         fontFamily={'\'Pacifico\', cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
-                        color={colorMode === 'light' ? 'customBlue' : 'customRed'}>
+                    >
                         {portfolio.about.firstName}&nbsp;
                     </Text>
                     <Text
@@ -80,7 +80,7 @@ export default function Navbar() {
                         fontFamily={'\'Pacifico\', cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
-                        color={colorMode === 'light' ? 'customRed' : 'customBlue'}>
+                        color={colorMode === 'light' ? 'customBlue' : 'customRed'}>
                         {portfolio.about.lastName.toUpperCase()}
                     </Text>
                     <Flex display={{ base: 'none', md: 'flex' }} m='auto'>
