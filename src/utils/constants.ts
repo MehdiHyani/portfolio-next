@@ -34,3 +34,5 @@ export const loadingPhrases = [
   "Alt-F4 speeds things up.",
   "Shovelling coal into the server",
 ];
+
+export const heroBlurDataUrl = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8amdXDwAFUwHiO7S8CwAAAABJRU5ErkJggg=='

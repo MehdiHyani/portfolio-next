@@ -17,9 +17,7 @@ const config = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'giphy.com',
-        // port: '',
-        // pathname: '/account123/**',
+        hostname: 'mehdi-hyani.ams3.cdn.digitaloceanspaces.com',
       },
     ],
   }
