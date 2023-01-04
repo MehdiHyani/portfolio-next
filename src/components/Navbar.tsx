@@ -69,7 +69,6 @@ export default function Navbar() {
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
                     <Text
                         textAlign={txtAlign}
-                        fontFamily={'\'Pacifico\', cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
                     >
@@ -77,7 +76,6 @@ export default function Navbar() {
                     </Text>
                     <Text
                         textAlign={txtAlign}
-                        fontFamily={'\'Pacifico\', cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
                         color={colorMode === 'light' ? 'customBlue' : 'customRed'}>

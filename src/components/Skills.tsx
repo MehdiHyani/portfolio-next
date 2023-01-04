@@ -59,7 +59,7 @@ const Skills = () => {
                                     flexGrow: 1,
                                     ml: 8,
                                 }}>
-                                <Text align='center' fontFamily='Debug' fontSize={'4xl'}>
+                                <Text align='center' fontSize={'4xl'}>
                                     {skillCategory.name}
                                 </Text>
                             </Flex>

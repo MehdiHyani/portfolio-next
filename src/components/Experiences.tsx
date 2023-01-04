@@ -77,7 +77,7 @@ const Experiences = () => {
                                 <AccordionButton>
                                     <Box flex={1}>
                                         <Box textAlign='left'>
-                                            <Text fontFamily='heading' display={disp} fontSize='2xl' fontWeight='bold'>{`${experience.title} at `}<strong>{experience.company}</strong></Text>
+                                            <Text display={disp} fontSize='2xl' fontWeight='bold'>{`${experience.title} at `}<strong>{experience.company}</strong></Text>
                                         </Box>
                                     </Box>
                                     <AccordionIcon />

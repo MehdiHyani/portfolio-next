@@ -83,7 +83,7 @@ export default function Hero() {
                                 {heroWavePhrases[wavePhrase]}
                             </Text>
                             <br />
-                            <Text fontSize='6xl' fontFamily='Techno' as={'span'} color={colorMode === 'light' ? 'customBlue' : 'customRed'}>
+                            <Text as={'i'} fontSize='6xl' color={colorMode === 'light' ? 'customBlue' : 'customRed'}>
                                 {formatFullName(portfolio.about.firstName, portfolio.about.lastName)}
                             </Text>
                         </Heading>

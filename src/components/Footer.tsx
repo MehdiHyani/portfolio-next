@@ -48,7 +48,6 @@ export default function Footer() {
                 <HStack >
                     <Text
                         textAlign={textAlign}
-                        fontFamily={'\'Pacifico\', cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
                         color={colorMode === 'light' ? 'gray.700' : 'white'}>
@@ -56,7 +55,6 @@ export default function Footer() {
                     </Text>
                     <Text
                         textAlign={textAlign}
-                        fontFamily={'\'Pacifico\', cursive'}
                         fontWeight='bold'
                         fontSize='2xl'
                         color={colorMode === 'light' ? 'customRed' : 'customBlue'}>
