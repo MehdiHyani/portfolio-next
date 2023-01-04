@@ -35,4 +35,4 @@ export const loadingPhrases = [
   "Shovelling coal into the server",
 ];
 
-export const heroBlurDataUrl = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8amdXDwAFUwHiO7S8CwAAAABJRU5ErkJggg=='
+export const heroBlurDataUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8amdXDwAFUwHiO7S8CwAAAABJRU5ErkJggg=='
