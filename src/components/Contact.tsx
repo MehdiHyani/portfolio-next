@@ -61,7 +61,7 @@ export default function Contact() {
     return (
         <Container id='contact' className="">
             <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-                <Heading textAlign={'center'} fontSize={'3xl'}>My Projects</Heading>
+                <Heading textAlign={'center'} fontSize={'3xl'}>Contact Me</Heading>
                 <br />
 
                 <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Whether it&apos;s only for a quick chat or for a professional inquiry, you are welcome to chat with me anytime. 😊😊</p>
