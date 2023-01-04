@@ -21,6 +21,7 @@
     "@trpc/next": "^10.0.0",
     "@trpc/react-query": "^10.7.0",
     "@trpc/server": "^10.0.0",
+    "@vercel/analytics": "^0.1.6",
     "framer-motion": "^6",
     "moment": "^2.29.4",
     "next": "13.1.1",

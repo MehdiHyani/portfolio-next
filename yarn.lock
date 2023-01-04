@@ -1451,6 +1451,11 @@
     "@typescript-eslint/types" "5.47.1"
     eslint-visitor-keys "^3.3.0"
 
+"@vercel/analytics@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@vercel/analytics/-/analytics-0.1.6.tgz#a1ce184168d8f5ec02e35ec954d84ee68ea01f4b"
+  integrity sha512-zNd5pj3iDvq8IMBQHa1YRcIteiw6ZiPB8AsONHd8ieFXlNpLqhXfIYnf4WvTfZ7S1NSJ++mIM14aJnNac/VMXQ==
+
 "@zag-js/element-size@0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@zag-js/element-size/-/element-size-0.3.0.tgz#1c0ab23c9ada453f5778c4baf1eed46218dc9e85"
