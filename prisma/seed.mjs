@@ -87,6 +87,7 @@ async function seedProjects(db)
 async function main() {
     try {
         const db = new PrismaClient();
+		await db.$connect();
         if(!db)
             throw new Error("Prisma not initialized");
             
@@ -96,9 +97,10 @@ async function main() {
         await seedSocials(db);
         await seedHobbies(db);
         await seedProjects(db);
+		await db.$disconnect()
     } catch (error) {
         console.error(error);
-    }
+    } 
     
 }
 

@@ -12,7 +12,11 @@ export default router({
             try {
                 const [about, experiences, projects, skillCategories, socials, hobbies] = await prisma.$transaction([
                     prisma.about.findFirstOrThrow(),
-                    prisma.experience.findMany(),
+                    prisma.experience.findMany({
+						orderBy: {
+							startDate: "desc"
+						}
+					}),
                     prisma.project.findMany(),
                     prisma.skillCategory.findMany({ include: { skills: true }, orderBy: { name: 'desc' } }),
                     prisma.social.findMany(),

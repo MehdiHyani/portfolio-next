@@ -131,7 +131,7 @@ export const skillCategories = [
                 {
                     name: 'Express',
                     level: 'expert',
-                    image: 'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/express-js-icon.png',
+                    image: 'https://cdn.icon-icons.com/icons2/2699/PNG/512/expressjs_logo_icon_169185.png',
                 },
                 {
                     name: 'Deno',
