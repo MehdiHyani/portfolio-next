@@ -17,7 +17,7 @@ const config = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'mehdi-hyani.ams3.cdn.digitaloceanspaces.com',
+        hostname: 'storagemehdihyani.blob.core.windows.net',
       },
     ],
   }
