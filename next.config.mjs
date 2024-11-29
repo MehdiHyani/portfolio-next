@@ -19,6 +19,10 @@ const config = {
         protocol: 'https',
         hostname: 'storagemehdihyani.blob.core.windows.net',
       },
+      {
+        protocol: 'https',
+        hostname: 'mehdihyani.me',
+      },
     ],
   }
 };
