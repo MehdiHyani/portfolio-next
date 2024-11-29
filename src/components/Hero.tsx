@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import Image from 'next/image'
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import type {
     IconProps
@@ -19,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { heroBlurDataUrl, heroWavePhrases } from '../utils/constants';
+import { heroWavePhrases } from '../utils/constants';
 import { formatFullName } from '../utils/helpers';
 import { trpc } from '../utils/trpc';
 import LoadingSpinner from './LoadingSpinner';
@@ -136,15 +135,12 @@ export default function Hero() {
                             width={'75%'}
                             overflow={'hidden'}>
                             {/* // @ts-expect-error width is responsive */}
-                            <Image
+                            <img
                                 alt={'Hero Image'}
                                 style={{ objectFit: 'cover', objectPosition: 'center', width: '100%', height: '100%' }}
                                 src={portfolio.about.image}
                                 height={500}
                                 width={500}
-                                placeholder="blur"
-                                blurDataURL={heroBlurDataUrl}
-                                priority
                             />
                         </Box>
                     </Flex>
